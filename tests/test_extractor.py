@@ -1,5 +1,5 @@
 import pytest
-from resume_parser_framework.extractor.extractor import NameExtractor, EmailExtractor, SkillsExtractor
+from resume_parser_framework.extractor.extractor_base import NameExtractor, EmailExtractor, SkillsExtractor
 
 
 # ------------------------

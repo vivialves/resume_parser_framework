@@ -1,7 +1,7 @@
 from typing import Dict
 
 from resume_parser_framework.framework.export import ResumeData
-from resume_parser_framework.extractor.extractor import FieldExtractor
+from resume_parser_framework.extractor.extractor_base import FieldExtractor
 
 
 class ResumeExtractor:

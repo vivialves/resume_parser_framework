@@ -3,7 +3,7 @@ import json
 from dataclasses import asdict
 
 from resume_parser_framework.utils.constants import RESUME_DIR
-from resume_parser_framework.extractor.extractor import (
+from resume_parser_framework.extractor.extractor_base import (
     EmailExtractor,
     NameExtractor,
     SkillsExtractor,
