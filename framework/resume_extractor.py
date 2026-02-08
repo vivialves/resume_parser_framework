@@ -16,5 +16,6 @@ class ResumeExtractor:
         return ResumeData(
             name=self.extractors["name"].extract(text),
             email=self.extractors["email"].extract(text),
-            skills=self.extractors["skills"].extract(text),
+            skills_based=self.extractors["skills_based"].extract(text),
+            skills_llm=self.extractors["skills_llm"].extract(text)
         )
