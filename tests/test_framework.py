@@ -29,7 +29,7 @@ def test_framework_orchestrates_correctly(resume_extractor,file_path, ext):
     assert result.name == "Jane Doe"
     assert result.email == "jane.doe@example.com"
     for skill in ["Python", "Docker", "AWS", "LLM"]:
-        assert skill in result.skills
+        assert skill in result.skills_based
 
 
 def test_framework_raises_if_file_has_no_extension(resume_extractor):

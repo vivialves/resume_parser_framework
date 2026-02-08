@@ -1,6 +1,9 @@
 import pytest
+
+from unittest.mock import MagicMock
+
 from resume_parser_framework.framework.export import ResumeData
-from resume_parser_framework.extractor.extractor_base import NameExtractor, EmailExtractor, SkillsExtractor
+from resume_parser_framework.extractor.extractor_simple import NameExtractor, EmailExtractor, SkillsExtractorBased
 from resume_parser_framework.framework.resume_extractor import ResumeExtractor
 
 # ------------------------
@@ -71,7 +74,8 @@ def extractors_dict():
     return {
         "name": NameExtractor(),
         "email": EmailExtractor(),
-        "skills": SkillsExtractor(),
+        "skills_based": SkillsExtractorBased(),
+        "skills_llm": MagicMock(),
     }
 
 
@@ -91,7 +95,7 @@ def sample_resume_data() -> ResumeData:
     return ResumeData(
         name="Jane Doe",
         email="jane.doe@example.com",
-        skills=["Python", "JavaScript", "SQL", "Machine Learning", "LLM", "NLP", "Docker", "AWS", "TensorFlow", "PyTorch"]
+        skills_based=["Python", "JavaScript", "SQL", "Machine Learning", "LLM", "NLP", "Docker", "AWS", "TensorFlow", "PyTorch"]
     )
 
 
@@ -101,7 +105,7 @@ def multi_surname_resume_data() -> ResumeData:
     return ResumeData(
         name="Jane Doe Williams",
         email="jane.doe@example.com",
-        skills=["Python", "JavaScript", "SQL", "Machine Learning", "LLM", "NLP", "Docker", "AWS", "TensorFlow", "PyTorch"]
+        skills_based=["Python", "JavaScript", "SQL", "Machine Learning", "LLM", "NLP", "Docker", "AWS", "TensorFlow", "PyTorch"]
     )
 
 
@@ -111,7 +115,7 @@ def special_chars_resume_data() -> ResumeData:
     return ResumeData(
         name="José María García",
         email="jose.garcia@example.com",
-        skills=["Python", "JavaScript", "SQL", "Machine Learning", "LLM"]
+        skills_based=["Python", "JavaScript", "SQL", "Machine Learning", "LLM"]
     )
 
 
@@ -121,5 +125,5 @@ def no_email_resume_data() -> ResumeData:
     return ResumeData(
         name="Ana Paula Costa",
         email=None,
-        skills=["Python", "JavaScript", "Machine Learning"]
+        skills_based=["Python", "JavaScript", "Machine Learning"]
     )
