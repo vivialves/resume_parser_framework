@@ -19,8 +19,10 @@ from resume_parser_framework.extractor.extractor_llm import (
 from resume_parser_framework.framework.resume_extractor import ResumeExtractor
 from resume_parser_framework.framework.framework import ResumeParserFramework
 
-load_dotenv()
+from resume_parser_framework.utils.logging_config import setup_logging
 
+load_dotenv()
+setup_logging()
 
 def main():
     # Configure extractors (very flexible — swap / add strategies easily)

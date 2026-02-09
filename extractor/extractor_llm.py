@@ -1,9 +1,13 @@
 import os
+import logging
+
 from typing import List, Optional
 from google import genai
 from pydantic import BaseModel
 
 from resume_parser_framework.extractor.extractor_base import FieldExtractor
+
+logger = logging.getLogger(__name__)
 
 
 class SkillsSchema(BaseModel):
@@ -34,7 +38,11 @@ class SkillsExtractorLLM(FieldExtractor):
 
     def extract(self, text: str) -> List[str]:
         if not text.strip():
+            logger.warning("Empty text received for LLM skill extraction")
             return []
+        
+        logger.info("Starting LLM-based skill extraction", extra={"model": self.model_name})
+
         try:
             response = self.client.models.generate_content(
                 model=self.model_name,
@@ -48,8 +56,13 @@ class SkillsExtractorLLM(FieldExtractor):
             )
 
             extracted_data = response.parsed
-            return sorted(list(set(extracted_data.skills)))
+            skills_ = sorted(list(set(extracted_data.skills)))
+
+            logger.info('LLM skill extraction completed', extra={"skills_count": len(skills_)})
+
+            return skills_
 
         except Exception as e:
+            logger.exception("LLM skill extraction failed")
             raise RuntimeError("LLM skill extraction failed") from e
 
