@@ -121,7 +121,7 @@ No changes are required in the orchestration logic when extending functionality.
 
 ## LLM Integration Strategy
 
-LLM-based skills extraction is implemented using **Google Gemini (gemini-2.0-flash)**.
+LLM-based skills extraction is implemented using **Google Gemini (gemini-2.5-flash)**.
 
 The LLM is treated as:
 - A **pluggable strategy**, not a core dependency
